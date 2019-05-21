@@ -309,6 +309,7 @@ public abstract class BasePrint {
     public void print() {
         mCancel = false;
         PrinterThread printTread = new PrinterThread();
+        Log.d("print", " printTread.start()");
         printTread.start();
     }
 
