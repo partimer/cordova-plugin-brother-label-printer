@@ -15,6 +15,7 @@ import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbManager;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.brother.ptouch.sdk.LabelInfo;
 import com.brother.ptouch.sdk.Printer;
@@ -115,6 +116,8 @@ public abstract class BasePrint {
      * get the printer settings from the SharedPreferences
      */
     private void getPreferences() {
+        Log.d("BasePrint", " getPreferences");
+
         if (mPrinterInfo == null) {
             mPrinterInfo = new PrinterInfo();
             return;
