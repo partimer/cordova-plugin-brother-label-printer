@@ -61,9 +61,11 @@ public abstract class BasePrint {
      * set PrinterInfo
      */
     public void setPrinterInfo() {
-
+        Log.d("BasePrint", " setPrinterInfo::getPreferences");
         getPreferences();
+        Log.d("BasePrint", " setPrinterInfo::setCustomPaper");
         setCustomPaper();
+        Log.d("BasePrint", " setPrinterInfo::setPrinterInfo");
         mPrinter.setPrinterInfo(mPrinterInfo);
         if (mPrinterInfo.port == PrinterInfo.Port.USB) {
             while (true) {
@@ -77,6 +79,7 @@ public abstract class BasePrint {
      * get PrinterInfo
      */
     public PrinterInfo getPrinterInfo() {
+        Log.d("BasePrint", " getPrinterInfo::getPreferences");
         getPreferences();
         return mPrinterInfo;
     }
