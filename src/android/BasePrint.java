@@ -481,22 +481,26 @@ public abstract class BasePrint {
     private class PrinterThread extends Thread {
         @Override
         public void run() {
-
+            Log.d("PrinterThread", " setPrinterInfo");
             // set info. for printing
             setPrinterInfo();
 
+            Log.d("print", " sendMessage");
             // start message
             Message msg = mHandle.obtainMessage(Common.MSG_PRINT_START);
             mHandle.sendMessage(msg);
 
             mPrintResult = new PrinterStatus();
 
+            Log.d("print", " startCommunication");
             mPrinter.startCommunication();
             if (!mCancel) {
+                Log.d("print", " doPrint");
                 doPrint();
             } else {
                 mPrintResult.errorCode = ErrorCode.ERROR_CANCEL;
             }
+            Log.d("print", " endCommunication");
             mPrinter.endCommunication();
 
             // end message
