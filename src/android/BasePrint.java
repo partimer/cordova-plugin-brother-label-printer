@@ -119,20 +119,25 @@ public abstract class BasePrint {
      * get the printer settings from the SharedPreferences
      */
     private void getPreferences() {
-        Log.d("BasePrint", " getPreferences");
+        Log.d("getPreferences", " PrinterInfo");
 
         if (mPrinterInfo == null) {
             mPrinterInfo = new PrinterInfo();
             return;
         }
         String input;
+        Log.d("getPreferences", " printerModel");
         mPrinterInfo.printerModel = PrinterInfo.Model.valueOf(sharedPreferences
                 .getString("printerModel", ""));
+        Log.d("getPreferences", " port");
         mPrinterInfo.port = PrinterInfo.Port.valueOf(sharedPreferences
                 .getString("port", ""));
+        Log.d("getPreferences", " ipAddress");
         mPrinterInfo.ipAddress = sharedPreferences.getString("address", "");
+        Log.d("getPreferences", " macAddress");
         mPrinterInfo.macAddress = sharedPreferences.getString("macAddress", "");
         if (isLabelPrinter(mPrinterInfo.printerModel)) {
+            Log.d("getPreferences", " isLabelPrinter");
             mPrinterInfo.paperSize = PrinterInfo.PaperSize.CUSTOM;
             switch (mPrinterInfo.printerModel) {
                 case QL_710W:
@@ -172,130 +177,161 @@ public abstract class BasePrint {
                     break;
             }
         } else {
+            Log.d("getPreferences", " not isLabelPrinter");
             mPrinterInfo.paperSize = PrinterInfo.PaperSize
                     .valueOf(sharedPreferences.getString("paperSize", ""));
         }
+        Log.d("getPreferences", " orientation");
         mPrinterInfo.orientation = PrinterInfo.Orientation
                 .valueOf(sharedPreferences.getString("orientation", PrinterInfo.Orientation.LANDSCAPE.toString()));
         input = sharedPreferences.getString("numberOfCopies", "1");
         if (input.equals(""))
             input = "1";
+        Log.d("getPreferences", " numberOfCopies");
         mPrinterInfo.numberOfCopies = Integer.parseInt(input);
+        Log.d("getPreferences", " halftone");
         mPrinterInfo.halftone = PrinterInfo.Halftone.valueOf(sharedPreferences
                 .getString("halftone", PrinterInfo.Halftone.PATTERNDITHER.toString()));
+        Log.d("getPreferences", " printMode");
         mPrinterInfo.printMode = PrinterInfo.PrintMode
                 .valueOf(sharedPreferences.getString("printMode", PrinterInfo.PrintMode.FIT_TO_PAPER.toString()));
+        Log.d("getPreferences", " pjCarbon");
         mPrinterInfo.pjCarbon = Boolean.parseBoolean(sharedPreferences
                 .getString("pjCarbon", new Boolean(false).toString()));
         input = sharedPreferences.getString("pjDensity", "");
         if (input.equals(""))
             input = "5";
+            
+        Log.d("getPreferences", " pjDensity");
         mPrinterInfo.pjDensity = Integer.parseInt(input);
+        Log.d("getPreferences", " pjFeedMode");
         mPrinterInfo.pjFeedMode = PrinterInfo.PjFeedMode
                 .valueOf(sharedPreferences.getString("pjFeedMode", PrinterInfo.PjFeedMode.PJ_FEED_MODE_FIXEDPAGE.toString()));
+        Log.d("getPreferences", " align");
         mPrinterInfo.align = PrinterInfo.Align.valueOf(sharedPreferences
                 .getString("align", PrinterInfo.Align.LEFT.toString()));
         input = sharedPreferences.getString("leftMargin", "");
         if (input.equals(""))
             input = "0";
+            
+        Log.d("getPreferences", " margin.left");
         mPrinterInfo.margin.left = Integer.parseInt(input);
+        Log.d("getPreferences", " valign");
         mPrinterInfo.valign = PrinterInfo.VAlign.valueOf(sharedPreferences
                 .getString("valign", PrinterInfo.VAlign.TOP.toString()));
         input = sharedPreferences.getString("topMargin", "");
         if (input.equals(""))
             input = "0";
+            
+        Log.d("getPreferences", " margin.top");
         mPrinterInfo.margin.top = Integer.parseInt(input);
         input = sharedPreferences.getString("customPaperWidth", "");
         if (input.equals(""))
             input = "0";
 
+        Log.d("getPreferences", " mirrorPrint");
         mPrinterInfo.mirrorPrint = Boolean.parseBoolean(sharedPreferences
                 .getString("mirrorPrint", new Boolean(false).toString()));
+                
+        Log.d("getPreferences", " customPaperWidth");
         mPrinterInfo.customPaperWidth = Integer.parseInt(input);
 
         input = sharedPreferences.getString("customPaperLength", "0");
         if (input.equals(""))
             input = "0";
 
+        Log.d("getPreferences", " customPaperLength");
         mPrinterInfo.customPaperLength = Integer.parseInt(input);
         input = sharedPreferences.getString("customFeed", "");
         if (input.equals(""))
             input = "0";
+            
+        Log.d("getPreferences", " customFeed");
         mPrinterInfo.customFeed = Integer.parseInt(input);
 
         customSetting = sharedPreferences.getString("customSetting", "");
+        Log.d("getPreferences", " paperPosition");
         mPrinterInfo.paperPosition = PrinterInfo.Align
                 .valueOf(sharedPreferences.getString("paperPosition", PrinterInfo.Align.LEFT.toString()));
+        Log.d("getPreferences", " dashLine");
         mPrinterInfo.dashLine = Boolean.parseBoolean(sharedPreferences
                 .getString("dashLine", "false"));
 
+        Log.d("getPreferences", " enabledTethering");
         mPrinterInfo.enabledTethering = Boolean.parseBoolean(sharedPreferences
                 .getString("enabledTethering", new Boolean(false).toString()));
 
         input = sharedPreferences.getString("rjDensity", "");
         if (input.equals(""))
             input = "0";
+            
+        Log.d("getPreferences", " rjDensity");
         mPrinterInfo.rjDensity = Integer.parseInt(input);
 
-
+        Log.d("getPreferences", " rotate180");
         mPrinterInfo.rotate180 = Boolean.parseBoolean(sharedPreferences
                 .getString("rotate180", ""));
-
+        Log.d("getPreferences", " savePrnPath");
         mPrinterInfo.savePrnPath = sharedPreferences.getString("savePrnPath", "");
-
+        Log.d("getPreferences", " peelMode");
         mPrinterInfo.peelMode = Boolean.parseBoolean(sharedPreferences
                 .getString("peelMode", ""));
-
+        Log.d("getPreferences", " mode9");
         mPrinterInfo.mode9 = Boolean.parseBoolean(sharedPreferences
                 .getString("mode9", new Boolean(true).toString()));
-
+        Log.d("getPreferences", " overwrite");
         mPrinterInfo.overwrite = Boolean.parseBoolean(sharedPreferences
                 .getString("overwrite", new Boolean(true).toString()));
-
+        Log.d("getPreferences", " dashLine");
         mPrinterInfo.dashLine = Boolean.parseBoolean(sharedPreferences
                 .getString("dashLine", ""));
         input = sharedPreferences.getString("pjSpeed", "2");
+        Log.d("getPreferences", " pjSpeed");
         mPrinterInfo.pjSpeed = Integer.parseInt(input);
-
+        Log.d("getPreferences", " rollPrinterCase");
         mPrinterInfo.rollPrinterCase = PrinterInfo.PjRollCase
                 .valueOf(sharedPreferences.getString("printerCase",
                         PrinterInfo.PjRollCase.PJ_ROLLCASE_OFF.toString()));
-
+        Log.d("getPreferences", " skipStatusCheck");
         mPrinterInfo.skipStatusCheck = Boolean.parseBoolean(sharedPreferences
                 .getString("skipStatusCheck", new Boolean(false).toString()));
-
+        Log.d("getPreferences", " softFocusing");
         mPrinterInfo.softFocusing = Boolean.parseBoolean(sharedPreferences
                 .getString("softFocusing", new Boolean(false).toString()));
-
+        Log.d("getPreferences", " checkPrintEnd");
         mPrinterInfo.checkPrintEnd = PrinterInfo.CheckPrintEnd
                 .valueOf(sharedPreferences.getString("checkPrintEnd", PrinterInfo.CheckPrintEnd.CPE_CHECK.toString()));
+        Log.d("getPreferences", " printQuality");
         mPrinterInfo.printQuality = PrinterInfo.PrintQuality
                 .valueOf(sharedPreferences.getString("printQuality",
                         PrinterInfo.PrintQuality.NORMAL.toString()));
-
+        Log.d("getPreferences", " rawMode");
         mPrinterInfo.rawMode = Boolean.parseBoolean(sharedPreferences
                 .getString("rawMode", new Boolean(false).toString()));
-
+        Log.d("getPreferences", " trimTapeAfterData");
         mPrinterInfo.trimTapeAfterData = Boolean.parseBoolean(sharedPreferences
                 .getString("trimTapeAfterData", new Boolean(false).toString()));
-
         input = sharedPreferences.getString("imageThresholding", "");
         if (input.equals(""))
             input = "127";
-        mPrinterInfo.thresholdingValue = Integer.parseInt(input);
 
+        Log.d("getPreferences", " thresholdingValue");
+        mPrinterInfo.thresholdingValue = Integer.parseInt(input);
+        Log.d("getPreferences", " timeout");
         mPrinterInfo.timeout = new TimeoutSetting();
 
         input = sharedPreferences.getString("scaleValue", "");
         if (input.equals(""))
             input = "1";
         try {
+            Log.d("getPreferences", " scaleValue");
             mPrinterInfo.scaleValue = Double.parseDouble(input);
         } catch (NumberFormatException e) {
+            Log.d("getPreferences", " scaleValue");
             mPrinterInfo.scaleValue = 1.0;
         }
 
-
+        Log.d("getPreferences", " printerModel");
         if (mPrinterInfo.printerModel == Model.TD_4000
                 || mPrinterInfo.printerModel == Model.TD_4100N) {
             mPrinterInfo.isAutoCut = Boolean.parseBoolean(sharedPreferences
@@ -306,6 +342,13 @@ public abstract class BasePrint {
 
     }
 
+        /**
+     * get the printer settings from the SharedPreferences
+     */
+    private void getPreferences2() {
+    
+    }
+    
     /**
      * Launch the thread to print
      */
