@@ -379,7 +379,7 @@ public abstract class BasePrint {
                 .valueOf(sharedPreferences.getString("printMode", PrinterInfo.PrintMode.FIT_TO_PAPER.toString()));
                 
         Log.d("getPreferencesRJ2150", " paperSize");
-        mPrinterInfo.paperSize = PaperSize.CUSTOM;
+        mPrinterInfo.paperSize = PrinterInfo.PaperSize.CUSTOM;
         Log.d("getPreferencesRJ2150", " customPaper");
         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + customSetting;
         Log.d("getPreferencesRJ2150", customSetting);
