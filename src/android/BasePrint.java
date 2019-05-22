@@ -64,7 +64,7 @@ public abstract class BasePrint {
         Log.d("BasePrint", " setPrinterInfo::getPreferences");
         getPreferencesRJ2150();
         Log.d("BasePrint", " setPrinterInfo::setCustomPaper");
-        setCustomPaper();
+        // setCustomPaper();
         Log.d("BasePrint", " setPrinterInfo::setPrinterInfo");
         mPrinter.setPrinterInfo(mPrinterInfo);
         if (mPrinterInfo.port == PrinterInfo.Port.USB) {
@@ -353,7 +353,7 @@ public abstract class BasePrint {
             return;
         }
         String input;
-        Log.d("getPreferencesRJ2150", " printerModel");
+        Log.d("getPreferencesRJ2150", sharedPreferences.getString("printerModel", ""));
         mPrinterInfo.printerModel = PrinterInfo.Model.valueOf(sharedPreferences
                 .getString("printerModel", ""));
         Log.d("getPreferencesRJ2150", " port");
@@ -377,8 +377,13 @@ public abstract class BasePrint {
         Log.d("getPreferencesRJ2150", " printMode");
         mPrinterInfo.printMode = PrinterInfo.PrintMode
                 .valueOf(sharedPreferences.getString("printMode", PrinterInfo.PrintMode.FIT_TO_PAPER.toString()));
-        Log.d("getPreferencesRJ2150", " printMode");
+                
+        Log.d("getPreferencesRJ2150", " paperSize");
+        mPrinterInfo.paperSize = PaperSize.CUSTOM;
+        Log.d("getPreferencesRJ2150", " customPaper");
         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + customSetting;
+        Log.d("getPreferencesRJ2150", customSetting);
+
     }
     
     /**
