@@ -375,13 +375,12 @@ public abstract class BasePrint {
         mPrinterInfo.halftone = PrinterInfo.Halftone.valueOf(sharedPreferences
                 .getString("halftone", PrinterInfo.Halftone.PATTERNDITHER.toString()));
         Log.d("getPreferencesRJ2150", " printMode");
-        mPrinterInfo.printMode = PrinterInfo.PrintMode
-                .valueOf(sharedPreferences.getString("printMode", PrinterInfo.PrintMode.FIT_TO_PAPER.toString()));
+        mPrinterInfo.printMode = PrinterInfo.PrintMode.FIT_TO_PAGE;
                 
         Log.d("getPreferencesRJ2150", " paperSize");
-        mPrinterInfo.paperSize = PrinterInfo.PaperSize.CUSTOM;
+        // mPrinterInfo.paperSize = PrinterInfo.PaperSize.CUSTOM;
         Log.d("getPreferencesRJ2150", " customPaper");
-        mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + customSetting;
+        // mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + customSetting;
         Log.d("getPreferencesRJ2150", customSetting);
 
     }
