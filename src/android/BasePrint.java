@@ -62,7 +62,7 @@ public abstract class BasePrint {
      */
     public void setPrinterInfo() {
         Log.d("BasePrint", " setPrinterInfo::getPreferences");
-        getPreferences();
+        getPreferencesRJ2150();
         Log.d("BasePrint", " setPrinterInfo::setCustomPaper");
         setCustomPaper();
         Log.d("BasePrint", " setPrinterInfo::setPrinterInfo");
@@ -80,7 +80,7 @@ public abstract class BasePrint {
      */
     public PrinterInfo getPrinterInfo() {
         Log.d("BasePrint", " getPrinterInfo::getPreferences");
-        getPreferences();
+        getPreferencesRJ2150();
         return mPrinterInfo;
     }
 
@@ -345,8 +345,40 @@ public abstract class BasePrint {
         /**
      * get the printer settings from the SharedPreferences
      */
-    private void getPreferences2() {
-    
+    private void getPreferencesRJ2150() {
+        Log.d("getPreferencesRJ2150", " PrinterInfo");
+
+        if (mPrinterInfo == null) {
+            mPrinterInfo = new PrinterInfo();
+            return;
+        }
+        String input;
+        Log.d("getPreferencesRJ2150", " printerModel");
+        mPrinterInfo.printerModel = PrinterInfo.Model.valueOf(sharedPreferences
+                .getString("printerModel", ""));
+        Log.d("getPreferencesRJ2150", " port");
+        mPrinterInfo.port = PrinterInfo.Port.valueOf(sharedPreferences
+                .getString("port", ""));
+        Log.d("getPreferencesRJ2150", " ipAddress");
+        mPrinterInfo.ipAddress = sharedPreferences.getString("address", "");
+        Log.d("getPreferencesRJ2150", " macAddress");
+        mPrinterInfo.macAddress = sharedPreferences.getString("macAddress", "");
+        Log.d("getPreferencesRJ2150", " orientation");
+        mPrinterInfo.orientation = PrinterInfo.Orientation
+                .valueOf(sharedPreferences.getString("orientation", PrinterInfo.Orientation.LANDSCAPE.toString()));
+        input = sharedPreferences.getString("numberOfCopies", "1");
+        if (input.equals(""))
+            input = "1";
+        Log.d("getPreferencesRJ2150", " numberOfCopies");
+        mPrinterInfo.numberOfCopies = Integer.parseInt(input);
+        Log.d("getPreferencesRJ2150", " halftone");
+        mPrinterInfo.halftone = PrinterInfo.Halftone.valueOf(sharedPreferences
+                .getString("halftone", PrinterInfo.Halftone.PATTERNDITHER.toString()));
+        Log.d("getPreferencesRJ2150", " printMode");
+        mPrinterInfo.printMode = PrinterInfo.PrintMode
+                .valueOf(sharedPreferences.getString("printMode", PrinterInfo.PrintMode.FIT_TO_PAPER.toString()));
+        Log.d("getPreferencesRJ2150", " printMode");
+        mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + customSetting;
     }
     
     /**
