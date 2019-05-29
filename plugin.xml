@@ -8,7 +8,7 @@
     <name>BrotherPrinter</name>
 
     <description>Cordova hooks for Brother Print SDK</description>
-    <repo>https://github.com/MenelicSoftware/cordova-plugin-brother-label-printer.git</repo>
+    <repo>https://github.com/partimer/cordova-plugin-brother-label-printer.git</repo>
     <keywords>brother, sdk, print</keywords>
     <license></license>
 
@@ -44,6 +44,8 @@
         <source-file src="src/android/libs/BrotherPrintLibrary.jar" target-dir="libs" />
 <!--         <source-file src="src/android/libs/armeabi" target-dir="libs" /> -->
         <source-file src="src/android/libs/arm64" target-dir="libs" />
+        <source-file src="src/android/libs/arm64" target-dir="lib/arm64" />
+
 <!--         <source-file src="src/android/libs/arm" target-dir="libs" /> -->
 <!--         <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="libs" /> -->
 
