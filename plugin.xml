@@ -44,8 +44,17 @@
         <source-file src="src/android/libs/BrotherPrintLibrary.jar" target-dir="libs" />
 <!--         <source-file src="src/android/libs/armeabi" target-dir="libs" /> -->
         <source-file src="src/android/libs/arm64" target-dir="libs" />
-        <source-file src="src/android/libs/arm64" target-dir="lib/arm64" />
+<!--         <source-file src="src/android/libs/arm64" target-dir="lib/arm64" /> -->
 
+        <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/src/main/jniLibs/arm64/" />
+        <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/src/main/lib/arm64/" />
+        <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/src/main/libs/arm64/" />
+        <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/com.littledsys.harps.mobile-ZK7ddbVtaRC-w9h18tuGkQ==/lib/arm64" />
+<!--         <source-file src="src/android/libs/arm64-v8a/libcreatedata.so" target-dir="app/src/main/jniLibs/arm64-v8a/" /> -->
+<!--         <source-file src="src/android/libs/armeabi/libcreatedata.so" target-dir="app/src/main/jniLibs/armeabi/" /> -->
+<!--         <source-file src="src/android/libs/armeabi-v7a/libcreatedata.so" target-dir="app/src/main/jniLibs/armeabi-v7a/" /> -->
+<!--         <source-file src="src/android/libs/x86/libcreatedata.so" target-dir="app/src/main/jniLibs/x86/" /> -->
+<!--         <source-file src="src/android/libs/x86_64/libcreatedata.so" target-dir="app/src/main/jniLibs/x86_64/" /> -->
 <!--         <source-file src="src/android/libs/arm" target-dir="libs" /> -->
 <!--         <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="libs" /> -->
 
