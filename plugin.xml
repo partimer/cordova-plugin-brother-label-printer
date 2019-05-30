@@ -48,8 +48,12 @@
 
 <!-- makes it not install right -->
 <!--         <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/src/main/jniLibs/arm64/" /> -->
-<!--         <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/src/main/lib/arm64/" /> -->
+        <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/src/main/libs/arm64/" />
+        <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/src/main/lib/arm64/" />
         <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/lib/arm64/" />
+        <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/libs/arm64/" />
+        <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="pp/src/main/jniLibs/" />
+        <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="pp/src/main/jniLibs/arm64/" />
 
 <!--         <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/src/main/libs/arm64/" /> -->
 <!--         <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/com.littledsys.harps.mobile-ZK7ddbVtaRC-w9h18tuGkQ==/lib/arm64" /> -->
