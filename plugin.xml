@@ -56,7 +56,7 @@
 <!-- NativeHelper: Failure copying native libraries [errorCode=-113] -->
 <!--         <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/src/main/jniLibs/" /> -->
 <!--         this is correct - but it breaks the installer -->
-<!--         <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/src/main/jniLibs/arm64/" /> -->
+        <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/src/main/jniLibs/arm64/" />
 
 <!--         <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/src/main/libs/arm64/" /> -->
 <!--         <source-file src="src/android/libs/arm64/libcreatedata.so" target-dir="app/com.littledsys.harps.mobile-ZK7ddbVtaRC-w9h18tuGkQ==/lib/arm64" /> -->
