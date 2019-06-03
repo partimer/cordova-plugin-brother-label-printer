@@ -377,9 +377,9 @@ public abstract class BasePrint {
         Log.d("getPreferencesRJ2150", " printMode");
         mPrinterInfo.printMode = PrinterInfo.PrintMode.FIT_TO_PAGE;
                 
-//         Log.d("getPreferencesRJ2150", " paperSize");
-        // mPrinterInfo.paperSize = PrinterInfo.PaperSize.CUSTOM;
-//         Log.d("getPreferencesRJ2150", " customPaper");
+        Log.d("getPreferencesRJ2150", " paperSize");
+        mPrinterInfo.paperSize = PrinterInfo.PaperSize.CUSTOM;
+        Log.d("getPreferencesRJ2150", " customPaper");
         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + customSetting;
 //         Log.d("getPreferencesRJ2150", customSetting);
         Log.d("getPreferencesRJ2150", " getPreferencesRJ2150 end");
