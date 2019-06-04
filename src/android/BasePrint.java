@@ -365,7 +365,7 @@ public abstract class BasePrint {
         mPrinterInfo.macAddress = sharedPreferences.getString("macAddress", "");
         Log.d("getPreferencesRJ2150", " orientation");
         mPrinterInfo.orientation = PrinterInfo.Orientation
-                .valueOf(sharedPreferences.getString("orientation", PrinterInfo.Orientation.LANDSCAPE.toString()));
+                .valueOf(sharedPreferences.getString("orientation", PrinterInfo.Orientation.PORTRAIT.toString()));
         input = sharedPreferences.getString("numberOfCopies", "1");
         if (input.equals(""))
             input = "1";
