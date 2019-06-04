@@ -402,7 +402,7 @@ public abstract class BasePrint {
                                      topMargin,
                                      bottomMargin,
                                      labelPitch);
-        mPrinterInfo.setCustomPaperInfo(customPaperInfo);
+        mPrinterInfo.setCustomPaperInfo(newCustomDiaCutPaper);
 //works
 //         Log.d("getPreferencesRJ2150", ( Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin") );
 //         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
