@@ -18,8 +18,10 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.brother.ptouch.sdk.LabelInfo;
-import com.brother.ptouch.sdk.Printer;
 import com.brother.ptouch.sdk.CustomPaperInfo;
+import com.brother.ptouch.sdk.Unit;
+
+import com.brother.ptouch.sdk.Printer;
 import com.brother.ptouch.sdk.PrinterInfo;
 import com.brother.ptouch.sdk.PrinterInfo.ErrorCode;
 import com.brother.ptouch.sdk.PrinterInfo.Model;
@@ -391,9 +393,12 @@ public abstract class BasePrint {
         float topMargin = 0.0f;
         float bottomMargin = 0.0f;
         float labelPitch = 0.0f;
+        Unit unit = Unit.valueOf(sharedPreferences.getString("rjPaperUnit", "Mm"));
         
-        CustomPaperInfo newCustomDiaCutPaper(mPrinterInfo.printerModel, 
-                                     Unit.Mm, 
+        CustomPaperInfo customPaperInfo;
+
+        customPaperInfo = CustomPaperInfo.newCustomDiaCutPaper(mPrinterInfo.printerModel, 
+                                     unit, 
                                      tapeWidth,
                                      tapeLength,
                                      rightMargin,
@@ -401,7 +406,7 @@ public abstract class BasePrint {
                                      topMargin,
                                      bottomMargin,
                                      labelPitch);
-        mPrinterInfo.setCustomPaperInfo(newCustomDiaCutPaper);
+        mPrinterInfo.setCustomPaperInfo(customPaperInfo);
 //works
 //         Log.d("getPreferencesRJ2150", ( Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin") );
 //         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
