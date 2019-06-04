@@ -27,6 +27,8 @@ import com.brother.ptouch.sdk.TimeoutSetting;
 import com.brother.ptouch.sdk.printdemo.common.Common;
 import com.brother.ptouch.sdk.printdemo.common.MsgHandle;
 
+import cordova.file.applicationDirectory;
+
 public abstract class BasePrint {
 
     static Printer mPrinter;
@@ -377,11 +379,33 @@ public abstract class BasePrint {
         Log.d("getPreferencesRJ2150", " printMode");
         mPrinterInfo.printMode = PrinterInfo.PrintMode.FIT_TO_PAGE;
                 
-//         Log.d("getPreferencesRJ2150", " paperSize");
-//         mPrinterInfo.paperSize = PrinterInfo.PaperSize.CUSTOM;
+        Log.d("getPreferencesRJ2150", " paperSize");
+        mPrinterInfo.paperSize = PrinterInfo.PaperSize.CUSTOM;
 //         Log.d("getPreferencesRJ2150", Common.CUSTOM_PAPER_FOLDER);
-        Log.d("getPreferencesRJ2150", ( Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin") );
-        mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
+        mPrinterInfo.customPaperLength = Integer.parseInt("51");
+        mPrinterInfo.customPaperWidth = Integer.parseInt("26");
+        
+        float tapeWidth = 51.0f;
+        float tapeLength = 26.0f;
+        float rightMargin = 0.0f;
+        float leftMargin = 0.0f;
+        float topMargin = 0.0f;
+        float bottomMargin = 0.0f;
+        float labelPitch = 0.0f;
+        
+        CustomPaperInfo newCustomDiaCutPaper(mPrinterInfo.printerModel, 
+                                     Unit.Mm, 
+                                     tapeWidth,
+                                     tapeLength,
+                                     rightMargin,
+                                     leftMargin,
+                                     topMargin,
+                                     bottomMargin,
+                                     labelPitch);
+        mPrinterInfo.setCustomPaperInfo(customPaperInfo);
+//works
+//         Log.d("getPreferencesRJ2150", ( Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin") );
+//         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
 //         mPrinterInfo.customPaper = "src/android/bsr16act.bin";
         Log.d("getPreferencesRJ2150", " getPreferencesRJ2150 end");
 
