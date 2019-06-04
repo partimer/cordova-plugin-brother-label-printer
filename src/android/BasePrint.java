@@ -27,9 +27,6 @@ import com.brother.ptouch.sdk.TimeoutSetting;
 import com.brother.ptouch.sdk.printdemo.common.Common;
 import com.brother.ptouch.sdk.printdemo.common.MsgHandle;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 public abstract class BasePrint {
 
     static Printer mPrinter;
@@ -408,9 +405,6 @@ public abstract class BasePrint {
 //         Log.d("getPreferencesRJ2150", ( Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin") );
 //         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
 //         mPrinterInfo.customPaper = "src/android/bsr16act.bin";
-
-        Path workingDirectory=Paths.get(".").toAbsolutePath();
-        Log.d("workingDirectory", workingDirectory );
 
         Log.d("getPreferencesRJ2150", " getPreferencesRJ2150 end");
 
