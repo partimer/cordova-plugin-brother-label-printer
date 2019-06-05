@@ -446,10 +446,12 @@ public abstract class BasePrint {
 //works
 //         Log.d("getPreferencesRJ2150", ( Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin") );
 //         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
-        mPrinterInfo.customPaper = "libs/bsr16act.bin";
+        mPrinterInfo.customPaper = "/libs/bsr16act.bin";
 
-        Log.d("getPreferencesRJ2150", System.getProperty("user.dir") );
-
+        Log.d("getPreferencesRJ2150 user.dir", System.getProperty("user.dir") );
+        Log.d("getPreferencesRJ2150 java.home", System.getProperty("java.home") );
+        Log.d("getPreferencesRJ2150 user.home", System.getProperty("user.home") );
+        Log.d("getPreferencesRJ2150 user.home", System.getProperty("java.class.path") );
     }
     
     /**
