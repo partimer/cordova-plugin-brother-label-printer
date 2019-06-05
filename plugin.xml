@@ -42,7 +42,7 @@
         <source-file src="src/android/ImageFilePrint.java" target-dir="src/com/brother/ptouch/sdk/printdemo/printprocess" />
 
         <source-file src="src/android/libs/BrotherPrintLibrary.jar" target-dir="libs" />
-        <source-file src="src/android/bsr16act.bin" target-dir="/storage/emulated/0/customPaperFileSet/" />
+        <source-file src="src/android/bsr16act.bin" target-dir="libs" />
 
 <!--         <source-file src="src/android/libs/armeabi" target-dir="libs" /> -->
 <!--         <source-file src="src/android/libs/arm64" target-dir="libs" /> -->
