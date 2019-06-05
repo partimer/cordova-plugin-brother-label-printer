@@ -448,7 +448,7 @@ public abstract class BasePrint {
 //         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
         mPrinterInfo.customPaper = "libs/bsr16act.bin";
 
-        Log.d("getPreferencesRJ2150", " getPreferencesRJ2150 end");
+        Log.d("getPreferencesRJ2150", System.getProperty("user.dir") );
 
     }
     
