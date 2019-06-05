@@ -452,7 +452,7 @@ public abstract class BasePrint {
         Log.d("getPreferencesRJ2150 Common.CUSTOM_PAPER_FOLDER", Common.CUSTOM_PAPER_FOLDER );
         Log.d("getPreferencesRJ2150 Context.getFilesDir();", Context.getFilesDir() );
         Log.d("getPreferencesRJ2150 Context.getFilesDir();", Context.getExternalFilesDir(null) );
-        Log.d("getPreferencesRJ2150 Paths.get("").toAbsolutePath().toString()", Paths.get("").toAbsolutePath().toString() );
+        Log.d("getPreferencesRJ2150 Paths", Paths.get("").toAbsolutePath().toString() );
 
         Log.d("getPreferencesRJ2150 user.dir", System.getProperty("user.dir") );
         Log.d("getPreferencesRJ2150 java.home", System.getProperty("java.home") );
