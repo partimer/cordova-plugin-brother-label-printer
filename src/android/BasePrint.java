@@ -30,6 +30,9 @@ import com.brother.ptouch.sdk.TimeoutSetting;
 import com.brother.ptouch.sdk.printdemo.common.Common;
 import com.brother.ptouch.sdk.printdemo.common.MsgHandle;
 
+import java.util.List;
+import java.util.Map;
+
 public abstract class BasePrint {
 
     static Printer mPrinter;
@@ -356,35 +359,26 @@ public abstract class BasePrint {
             return;
         }
         String input;
-        Log.d("getPreferencesRJ2150", sharedPreferences.getString("printerModel", ""));
         mPrinterInfo.printerModel = PrinterInfo.Model.valueOf(sharedPreferences
                 .getString("printerModel", ""));
-        Log.d("getPreferencesRJ2150", " port");
         mPrinterInfo.port = PrinterInfo.Port.valueOf(sharedPreferences
                 .getString("port", ""));
-        Log.d("getPreferencesRJ2150", " ipAddress");
         mPrinterInfo.ipAddress = sharedPreferences.getString("address", "");
-        Log.d("getPreferencesRJ2150", " macAddress");
         mPrinterInfo.macAddress = sharedPreferences.getString("macAddress", "");
-        Log.d("getPreferencesRJ2150", " orientation");
         mPrinterInfo.orientation = PrinterInfo.Orientation
                 .valueOf(sharedPreferences.getString("orientation", PrinterInfo.Orientation.PORTRAIT.toString()));
-        input = sharedPreferences.getString("numberOfCopies", "1");
-        if (input.equals(""))
-            input = "1";
-        Log.d("getPreferencesRJ2150", " numberOfCopies");
-        mPrinterInfo.numberOfCopies = Integer.parseInt(input);
-        Log.d("getPreferencesRJ2150", " halftone");
-        mPrinterInfo.halftone = PrinterInfo.Halftone.valueOf(sharedPreferences
-                .getString("halftone", PrinterInfo.Halftone.PATTERNDITHER.toString()));
-        Log.d("getPreferencesRJ2150", " printMode");
+//         input = sharedPreferences.getString("numberOfCopies", "1");
+//         if (input.equals(""))
+//             input = "1";
+//         mPrinterInfo.numberOfCopies = Integer.parseInt(input);
+//         mPrinterInfo.halftone = PrinterInfo.Halftone.valueOf(sharedPreferences
+//                 .getString("halftone", PrinterInfo.Halftone.PATTERNDITHER.toString()));
+        mPrinterInfo.paperSize = PrinterInfo.PaperSize.CUSTOM;
         mPrinterInfo.printMode = PrinterInfo.PrintMode.FIT_TO_PAGE;
                 
-        Log.d("getPreferencesRJ2150", " paperSize");
-        mPrinterInfo.paperSize = PrinterInfo.PaperSize.CUSTOM;
 //         Log.d("getPreferencesRJ2150", Common.CUSTOM_PAPER_FOLDER);
-        mPrinterInfo.customPaperLength = Integer.parseInt("51");
-        mPrinterInfo.customPaperWidth = Integer.parseInt("26");
+//         mPrinterInfo.customPaperLength = Integer.parseInt("51");
+//         mPrinterInfo.customPaperWidth = Integer.parseInt("26");
         
         float tapeWidth = 51.0f;
         float tapeLength = 26.0f;
@@ -406,7 +400,15 @@ public abstract class BasePrint {
                                      topMargin,
                                      bottomMargin,
                                      labelPitch);
-        mPrinterInfo.setCustomPaperInfo(customPaperInfo);
+//         mPrinterInfo.setCustomPaperInfo(customPaperInfo);
+        List<Map<CustomPaperInfo.ErrorParameter, CustomPaperInfo.ErrorDetail>> errors = mPrinterInfo.setCustomPaperInfo(customPaperInfo);
+        if (errors.isEmpty()) {
+        } else {
+            // TODO: Humal Readable
+//             return BasePrintResult.fail(errors.toString());
+            Log.d("Config Error", errors.toString());
+
+        }
 //works
 //         Log.d("getPreferencesRJ2150", ( Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin") );
 //         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
