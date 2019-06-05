@@ -419,13 +419,17 @@ public abstract class BasePrint {
         CustomPaperInfo customPaperInfo;
         switch (paperKind) {
             case DIE_CUT:
+                Log.d("paperKind", "DIE_CUT");
                 customPaperInfo = CustomPaperInfo.newCustomDiaCutPaper(mPrinterInfo.printerModel, unit, width, length, rightMargin, leftMargin, topMargin, bottomMargin, labelPitch);
                 break;
             case MARKED_ROLL:
+                Log.d("paperKind", "MARKED_ROLL");
                 customPaperInfo = CustomPaperInfo.newCustomMarkRollPaper(mPrinterInfo.printerModel, unit, width, length, rightMargin, leftMargin, topMargin, bottomMargin, markPosition, markHeight);
                 break;
             case ROLL:
+                Log.d("paperKind", "ROLL");
             default:
+                Log.d("paperKind", "default");
                 customPaperInfo = CustomPaperInfo.newCustomRollPaper(mPrinterInfo.printerModel, unit, width, rightMargin, leftMargin, topMargin);
                 break;
         }
