@@ -404,49 +404,49 @@ public abstract class BasePrint {
 //         mPrinterInfo.setCustomPaperInfo(customPaperInfo);
 //         List<Map<CustomPaperInfo.ErrorParameter, CustomPaperInfo.ErrorDetail>> errors = mPrinterInfo.setCustomPaperInfo(customPaperInfo);
 
-        PaperKind paperKind = PaperKind.valueOf(sharedPreferences.getString("rjPaperKind", "DIE_CUT"));
-        float width = 51.0f;
-        float length = 26.0f;
-        float rightMargin = 0.0f;
-        float leftMargin = 0.0f;
-        float topMargin = 0.0f;
-        float bottomMargin = 0.0f;
-        float labelPitch = 0.0f;
-        float markPosition = 0.0f;
-        float markHeight = 0.0f;
-        Unit unit = Unit.valueOf(sharedPreferences.getString("rjPaperUnit", "Mm"));
-
-        CustomPaperInfo customPaperInfo;
-        switch (paperKind) {
-            case DIE_CUT:
-                Log.d("paperKind", "DIE_CUT");
-                customPaperInfo = CustomPaperInfo.newCustomDiaCutPaper(mPrinterInfo.printerModel, unit, width, length, rightMargin, leftMargin, topMargin, bottomMargin, labelPitch);
-                break;
-            case MARKED_ROLL:
-                Log.d("paperKind", "MARKED_ROLL");
-                customPaperInfo = CustomPaperInfo.newCustomMarkRollPaper(mPrinterInfo.printerModel, unit, width, length, rightMargin, leftMargin, topMargin, bottomMargin, markPosition, markHeight);
-                break;
-            case ROLL:
-                Log.d("paperKind", "ROLL");
-            default:
-                Log.d("paperKind", "default");
-                customPaperInfo = CustomPaperInfo.newCustomRollPaper(mPrinterInfo.printerModel, unit, width, rightMargin, leftMargin, topMargin);
-                break;
-        }
-
-        List<Map<CustomPaperInfo.ErrorParameter, CustomPaperInfo.ErrorDetail>> errors = mPrinterInfo.setCustomPaperInfo(customPaperInfo);
-
-        if (errors.isEmpty()) {
-        } else {
-            // TODO: Humal Readable
-//             return BasePrintResult.fail(errors.toString());
-            Log.d("Config Error", errors.toString());
-
-        }
+//         PaperKind paperKind = PaperKind.valueOf(sharedPreferences.getString("rjPaperKind", "DIE_CUT"));
+//         float width = 51.0f;
+//         float length = 26.0f;
+//         float rightMargin = 0.0f;
+//         float leftMargin = 0.0f;
+//         float topMargin = 0.0f;
+//         float bottomMargin = 0.0f;
+//         float labelPitch = 0.0f;
+//         float markPosition = 0.0f;
+//         float markHeight = 0.0f;
+//         Unit unit = Unit.valueOf(sharedPreferences.getString("rjPaperUnit", "Mm"));
+// 
+//         CustomPaperInfo customPaperInfo;
+//         switch (paperKind) {
+//             case DIE_CUT:
+//                 Log.d("paperKind", "DIE_CUT");
+//                 customPaperInfo = CustomPaperInfo.newCustomDiaCutPaper(mPrinterInfo.printerModel, unit, width, length, rightMargin, leftMargin, topMargin, bottomMargin, labelPitch);
+//                 break;
+//             case MARKED_ROLL:
+//                 Log.d("paperKind", "MARKED_ROLL");
+//                 customPaperInfo = CustomPaperInfo.newCustomMarkRollPaper(mPrinterInfo.printerModel, unit, width, length, rightMargin, leftMargin, topMargin, bottomMargin, markPosition, markHeight);
+//                 break;
+//             case ROLL:
+//                 Log.d("paperKind", "ROLL");
+//             default:
+//                 Log.d("paperKind", "default");
+//                 customPaperInfo = CustomPaperInfo.newCustomRollPaper(mPrinterInfo.printerModel, unit, width, rightMargin, leftMargin, topMargin);
+//                 break;
+//         }
+// 
+//         List<Map<CustomPaperInfo.ErrorParameter, CustomPaperInfo.ErrorDetail>> errors = mPrinterInfo.setCustomPaperInfo(customPaperInfo);
+// 
+//         if (errors.isEmpty()) {
+//         } else {
+//             // TODO: Humal Readable
+// //             return BasePrintResult.fail(errors.toString());
+//             Log.d("Config Error", errors.toString());
+// 
+//         }
 //works
 //         Log.d("getPreferencesRJ2150", ( Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin") );
 //         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
-//         mPrinterInfo.customPaper = "src/android/bsr16act.bin";
+        mPrinterInfo.customPaper = "src/android/51mm26mm.bin";
 
         Log.d("getPreferencesRJ2150", " getPreferencesRJ2150 end");
 
