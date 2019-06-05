@@ -16,6 +16,7 @@ import android.hardware.usb.UsbManager;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.os.Environment;
 
 import com.brother.ptouch.sdk.LabelInfo;
 import com.brother.ptouch.sdk.CustomPaperInfo;
@@ -446,12 +447,15 @@ public abstract class BasePrint {
 //works
 //         Log.d("getPreferencesRJ2150", ( Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin") );
 //         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
-        mPrinterInfo.customPaper = "/libs/bsr16act.bin";
+        mPrinterInfo.customPaper = "/src/android/bsr16act.bin";
+        Log.d("getPreferencesRJ2150 Common.CUSTOM_PAPER_FOLDER", Common.CUSTOM_PAPER_FOLDER );
+        Log.d("getPreferencesRJ2150 context.getFilesDir();", context.getFilesDir(); );
+        Log.d("getPreferencesRJ2150 context.getFilesDir();", context.getExternalFilesDir(null); );
 
         Log.d("getPreferencesRJ2150 user.dir", System.getProperty("user.dir") );
         Log.d("getPreferencesRJ2150 java.home", System.getProperty("java.home") );
         Log.d("getPreferencesRJ2150 user.home", System.getProperty("user.home") );
-        Log.d("getPreferencesRJ2150 user.home", System.getProperty("java.class.path") );
+        Log.d("getPreferencesRJ2150 java.class.path", System.getProperty("java.class.path") );
     }
     
     /**
