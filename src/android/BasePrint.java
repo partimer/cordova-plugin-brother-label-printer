@@ -20,6 +20,7 @@ import android.util.Log;
 import com.brother.ptouch.sdk.LabelInfo;
 import com.brother.ptouch.sdk.CustomPaperInfo;
 import com.brother.ptouch.sdk.Unit;
+import com.brother.ptouch.sdk.PaperKind;
 
 import com.brother.ptouch.sdk.Printer;
 import com.brother.ptouch.sdk.PrinterInfo;
@@ -380,28 +381,57 @@ public abstract class BasePrint {
 //         mPrinterInfo.customPaperLength = Integer.parseInt("51");
 //         mPrinterInfo.customPaperWidth = Integer.parseInt("26");
         
-        float tapeWidth = 51.0f;
-        float tapeLength = 26.0f;
-        float rightMargin = 0.0f;
-        float leftMargin = 0.0f;
-        float topMargin = 0.0f;
-        float bottomMargin = 0.0f;
-        float labelPitch = 0.0f;
-        Unit unit = Unit.valueOf(sharedPreferences.getString("rjPaperUnit", "Mm"));
-        
-        CustomPaperInfo customPaperInfo;
-
-        customPaperInfo = CustomPaperInfo.newCustomDiaCutPaper(mPrinterInfo.printerModel, 
-                                     unit, 
-                                     tapeWidth,
-                                     tapeLength,
-                                     rightMargin,
-                                     leftMargin,
-                                     topMargin,
-                                     bottomMargin,
-                                     labelPitch);
+//         float tapeWidth = 51.0f;
+//         float tapeLength = 26.0f;
+//         float rightMargin = 0.0f;
+//         float leftMargin = 0.0f;
+//         float topMargin = 0.0f;
+//         float bottomMargin = 0.0f;
+//         float labelPitch = 0.0f;
+//         Unit unit = Unit.valueOf("Mm");
+//         
+//         CustomPaperInfo customPaperInfo;
+// 
+//         customPaperInfo = CustomPaperInfo.newCustomDiaCutPaper(mPrinterInfo.printerModel, 
+//                                      unit, 
+//                                      tapeWidth,
+//                                      tapeLength,
+//                                      rightMargin,
+//                                      leftMargin,
+//                                      topMargin,
+//                                      bottomMargin,
+//                                      labelPitch);
 //         mPrinterInfo.setCustomPaperInfo(customPaperInfo);
+//         List<Map<CustomPaperInfo.ErrorParameter, CustomPaperInfo.ErrorDetail>> errors = mPrinterInfo.setCustomPaperInfo(customPaperInfo);
+
+        PaperKind paperKind = PaperKind.valueOf(sharedPreferences.getString("rjPaperKind", "DIE_CUT"));
+        float width = parseFloat(sharedPreferences.getString("rjPaperWidth", ""), 51.0f);
+        float length = parseFloat(sharedPreferences.getString("rjPaperLength", ""), 26.0f);
+        float rightMargin = parseFloat(sharedPreferences.getString("rjPaperRightMargin", ""), 0.0f);
+        float leftMargin = parseFloat(sharedPreferences.getString("rjPaperLeftMargin", ""), 0.0f);
+        float topMargin = parseFloat(sharedPreferences.getString("rjPaperTopMargin", ""), 0.0f);
+        float bottomMargin = parseFloat(sharedPreferences.getString("rjPaperBottomMargin", ""), 0.0f);
+        float labelPitch = parseFloat(sharedPreferences.getString("rjPaperLabelPitch", ""), 0.0f);
+        float markPosition = parseFloat(sharedPreferences.getString("rjPaperMarkPosition", ""), 0.0f);
+        float markHeight = parseFloat(sharedPreferences.getString("rjPaperMarkHeight", ""), 0.0f);
+        Unit unit = Unit.valueOf(sharedPreferences.getString("rjPaperUnit", "Mm"));
+
+        CustomPaperInfo customPaperInfo;
+        switch (paperKind) {
+            case DIE_CUT:
+                customPaperInfo = CustomPaperInfo.newCustomDiaCutPaper(mPrinterInfo.printerModel, unit, width, length, rightMargin, leftMargin, topMargin, bottomMargin, labelPitch);
+                break;
+            case MARKED_ROLL:
+                customPaperInfo = CustomPaperInfo.newCustomMarkRollPaper(mPrinterInfo.printerModel, unit, width, length, rightMargin, leftMargin, topMargin, bottomMargin, markPosition, markHeight);
+                break;
+            case ROLL:
+            default:
+                customPaperInfo = CustomPaperInfo.newCustomRollPaper(mPrinterInfo.printerModel, unit, width, rightMargin, leftMargin, topMargin);
+                break;
+        }
+
         List<Map<CustomPaperInfo.ErrorParameter, CustomPaperInfo.ErrorDetail>> errors = mPrinterInfo.setCustomPaperInfo(customPaperInfo);
+
         if (errors.isEmpty()) {
         } else {
             // TODO: Humal Readable
