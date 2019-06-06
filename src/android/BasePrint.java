@@ -376,7 +376,7 @@ public abstract class BasePrint {
 //         mPrinterInfo.numberOfCopies = Integer.parseInt(input);
 //         mPrinterInfo.halftone = PrinterInfo.Halftone.valueOf(sharedPreferences
 //                 .getString("halftone", PrinterInfo.Halftone.PATTERNDITHER.toString()));
-        mPrinterInfo.paperSize = PrinterInfo.PaperSize.CUSTOM;
+//         mPrinterInfo.paperSize = PrinterInfo.PaperSize.CUSTOM;
         mPrinterInfo.printMode = PrinterInfo.PrintMode.FIT_TO_PAGE;
                 
 //         Log.d("getPreferencesRJ2150", Common.CUSTOM_PAPER_FOLDER);
@@ -448,7 +448,9 @@ public abstract class BasePrint {
 //works
 //         Log.d("getPreferencesRJ2150", ( Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin") );
 //         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
-        mPrinterInfo.customPaper = "file:///android_asset/bsr16act.bin";
+//         mPrinterInfo.customPaper = "file:///android_asset/bsr16act.bin";
+        mPrinterInfo.customPaper = "file:///storage/emulated/0/Android/data/com.littledsys.harps.mobile/files/bsr16act.bin";
+
         Log.d("getPreferencesRJ2150 Common.CUSTOM_PAPER_FOLDER", Common.CUSTOM_PAPER_FOLDER );
 //         Log.d("getPreferencesRJ2150 Context.getFilesDir();", Context.getFilesDir() );
 //         Log.d("getPreferencesRJ2150 Context.getFilesDir();", Context.getExternalFilesDir(null) );
@@ -479,6 +481,36 @@ public abstract class BasePrint {
         getTread.start();
     }
 
+    
+    /**
+     * copy from raw in resource
+     */
+    private void raw2file(String fileName, int fileID) {
+
+        File newdir = new File(Common.CUSTOM_PAPER_FOLDER);
+        if (!newdir.exists()) {
+            newdir.mkdir();
+        }
+        File dstFile = new File(Common.CUSTOM_PAPER_FOLDER + fileName);
+        if (!dstFile.exists()) {
+            try {
+                InputStream input;
+                OutputStream output;
+                input = this.getResources().openRawResource(fileID);
+                output = new FileOutputStream(dstFile);
+                int DEFAULT_BUFFER_SIZE = 1024 * 4;
+                byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
+                int n;
+                while (-1 != (n = input.read(buffer))) {
+                    output.write(buffer, 0, n);
+                }
+                input.close();
+                output.close();
+            } catch (IOException ignored) {
+            }
+        }
+    }
+    
     /**
      * set custom paper for RJ and TD
      */
