@@ -448,7 +448,7 @@ public abstract class BasePrint {
 //works
 //         Log.d("getPreferencesRJ2150", ( Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin") );
 //         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
-        mPrinterInfo.customPaper = "/src/android/bsr16act.bin";
+        mPrinterInfo.customPaper = "file:///android_asset/bsr16act.bin";
         Log.d("getPreferencesRJ2150 Common.CUSTOM_PAPER_FOLDER", Common.CUSTOM_PAPER_FOLDER );
 //         Log.d("getPreferencesRJ2150 Context.getFilesDir();", Context.getFilesDir() );
 //         Log.d("getPreferencesRJ2150 Context.getFilesDir();", Context.getExternalFilesDir(null) );
