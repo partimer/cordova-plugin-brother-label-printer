@@ -494,7 +494,7 @@ public abstract class BasePrint {
     /**
      * copy from raw in resource
      */
-    private void raw2file(String fileName, int fileID) {
+    private void raw2file(String fileName, int fileID, Context context) {
 
         File newdir = new File(Common.CUSTOM_PAPER_FOLDER);
         if (!newdir.exists()) {
@@ -505,7 +505,7 @@ public abstract class BasePrint {
             try {
                 InputStream input;
                 OutputStream output;
-                input = this.getResources().openRawResource(fileID);
+                input = context.getResources().openRawResource(fileID);
                 output = new FileOutputStream(dstFile);
                 int DEFAULT_BUFFER_SIZE = 1024 * 4;
                 byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
