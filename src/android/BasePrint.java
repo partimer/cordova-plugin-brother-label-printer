@@ -456,9 +456,9 @@ public abstract class BasePrint {
 //         }
 //works
 //         Log.d("getPreferencesRJ2150", ( Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin") );
-//         mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "bsr16act.bin";
+        mPrinterInfo.customPaper = Common.CUSTOM_PAPER_FOLDER + "RJ2150_51x26mm.bin";
 //         mPrinterInfo.customPaper = "file:///android_asset/bsr16act.bin";
-        mPrinterInfo.customPaper = "file:///storage/emulated/0/Android/data/com.littledsys.harps.mobile/files/bsr16act.bin";
+//         mPrinterInfo.customPaper = "file:///storage/emulated/0/Android/data/com.littledsys.harps.mobile/files/bsr16act.bin";
 
         Log.d("getPreferencesRJ2150 Common.CUSTOM_PAPER_FOLDER", Common.CUSTOM_PAPER_FOLDER );
 //         Log.d("getPreferencesRJ2150 Context.getFilesDir();", Context.getFilesDir() );
@@ -469,6 +469,10 @@ public abstract class BasePrint {
         Log.d("getPreferencesRJ2150 java.home", System.getProperty("java.home") );
         Log.d("getPreferencesRJ2150 user.home", System.getProperty("user.home") );
         Log.d("getPreferencesRJ2150 java.class.path", System.getProperty("java.class.path") );
+        
+        raw2file("RJ2150_51x26mm.bin", R.raw.rj2150_51x26mm);
+
+        
     }
     
     /**
