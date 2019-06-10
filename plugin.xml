@@ -44,6 +44,7 @@
         <source-file src="src/android/libs/BrotherPrintLibrary.jar" target-dir="libs" />
         <source-file src="src/android/bsr16act.bin" target-dir="libs" />
         <source-file src="src/android/bsr16act.bin" target-dir="assets" />
+        <source-file src="src/android/RJ2150_51x26mm.bin" target-dir="res/raw" />
 
 <!--         <source-file src="src/android/libs/armeabi" target-dir="libs" /> -->
 <!--         <source-file src="src/android/libs/arm64" target-dir="libs" /> -->
