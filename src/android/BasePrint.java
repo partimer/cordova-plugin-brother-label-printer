@@ -60,6 +60,8 @@ public abstract class BasePrint {
 
     BasePrint(Context context, MsgHandle handle) {
         mHandle = handle;
+        raw2file("RJ2150_51x26mm.bin", R.raw.rj2150_51x26mm, context);
+
         sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(context);
         mCancel = false;
@@ -473,7 +475,7 @@ public abstract class BasePrint {
         Log.d("getPreferencesRJ2150 user.home", System.getProperty("user.home") );
         Log.d("getPreferencesRJ2150 java.class.path", System.getProperty("java.class.path") );
         
-        raw2file("RJ2150_51x26mm.bin", R.raw.rj2150_51x26mm);
+//         raw2file("RJ2150_51x26mm.bin", R.raw.rj2150_51x26mm);
 
         
     }
@@ -501,7 +503,7 @@ public abstract class BasePrint {
     /**
      * copy from raw in resource
      */
-    private void raw2file(String fileName, int fileID) {
+    private void raw2file(String fileName, int fileID, Context context) {
 
         File newdir = new File(Common.CUSTOM_PAPER_FOLDER);
         if (!newdir.exists()) {
