@@ -32,7 +32,7 @@ import com.brother.ptouch.sdk.TimeoutSetting;
 import com.brother.ptouch.sdk.printdemo.common.Common;
 import com.brother.ptouch.sdk.printdemo.common.MsgHandle;
 
-import com.littedsys.harps.mobile.R;
+import com.littledsys.harps.mobile.R;
 
 import java.nio.file.Paths;
 
