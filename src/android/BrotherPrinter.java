@@ -53,6 +53,9 @@ import com.brother.ptouch.sdk.printdemo.common.MsgHandle;
 import com.brother.ptouch.sdk.printdemo.printprocess.ImageBitmapPrint;
 import com.brother.ptouch.sdk.printdemo.printprocess.ImageFilePrint;
 
+import com.littledsys.harps.mobile.R;
+
+
 public class BrotherPrinter extends CordovaPlugin {
     private static PrinterInfo.Model[] supportedModels = {
         PrinterInfo.Model.QL_720NW,
@@ -370,6 +373,11 @@ public class BrotherPrinter extends CordovaPlugin {
     }
 
     private void printViaSDK(final JSONArray args, final CallbackContext callbackctx) {
+    // send bin config file to phone file system
+//         Context context = cordova.getActivity().getApplicationContext();
+//         raw2file("RJ2150_51x26mm.bin", R.raw.rj2150_51x26mm, context);
+
+    
         Log.d(TAG, " printViaSDK");
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(cordova.getActivity());
@@ -429,6 +437,35 @@ public class BrotherPrinter extends CordovaPlugin {
         mBitmapPrint.print();
     }
 
+//     /**
+//      * copy from raw in resource
+//      */
+//     private void raw2file(String fileName, int fileID, Context context) {
+// 
+//         File newdir = new File(Common.CUSTOM_PAPER_FOLDER);
+//         if (!newdir.exists()) {
+//             newdir.mkdir();
+//         }
+//         File dstFile = new File(Common.CUSTOM_PAPER_FOLDER + fileName);
+//         if (!dstFile.exists()) {
+//             try {
+//                 InputStream input;
+//                 OutputStream output;
+//                 input = context.getResources().openRawResource(fileID);
+//                 output = new FileOutputStream(dstFile);
+//                 int DEFAULT_BUFFER_SIZE = 1024 * 4;
+//                 byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
+//                 int n;
+//                 while (-1 != (n = input.read(buffer))) {
+//                     output.write(buffer, 0, n);
+//                 }
+//                 input.close();
+//                 output.close();
+//             } catch (IOException ignored) {
+//             }
+//         }
+//     }
+    
     private void sendUSBConfig(final JSONArray args, final CallbackContext callbackctx){
 
         cordova.getThreadPool().execute(new Runnable() {
@@ -437,6 +474,7 @@ public class BrotherPrinter extends CordovaPlugin {
                 Printer myPrinter = new Printer();
 
                 Context context = cordova.getActivity().getApplicationContext();
+                
 
                 UsbManager usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);
                 UsbDevice usbDevice = myPrinter.getUsbDevice(usbManager);

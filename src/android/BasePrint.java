@@ -60,6 +60,7 @@ public abstract class BasePrint {
 
     BasePrint(Context context, MsgHandle handle) {
         mHandle = handle;
+        
         raw2file("RJ2150_51x26mm.bin", R.raw.rj2150_51x26mm, context);
 
         sharedPreferences = PreferenceManager
@@ -394,61 +395,6 @@ public abstract class BasePrint {
         mPrinterInfo.printMode = PrinterInfo.PrintMode.FIT_TO_PAGE;
                 
 //         Log.d("getPreferencesRJ2150", Common.CUSTOM_PAPER_FOLDER);
-//         mPrinterInfo.customPaperLength = Integer.parseInt("51");
-//         mPrinterInfo.customPaperWidth = Integer.parseInt("26");
-        
-//         float tapeWidth = 51.0f;
-//         float tapeLength = 26.0f;
-//         float rightMargin = 0.0f;
-//         float leftMargin = 0.0f;
-//         float topMargin = 0.0f;
-//         float bottomMargin = 0.0f;
-//         float labelPitch = 0.0f;
-//         Unit unit = Unit.valueOf("Mm");
-//         
-//         CustomPaperInfo customPaperInfo;
-// 
-//         customPaperInfo = CustomPaperInfo.newCustomDiaCutPaper(mPrinterInfo.printerModel, 
-//                                      unit, 
-//                                      tapeWidth,
-//                                      tapeLength,
-//                                      rightMargin,
-//                                      leftMargin,
-//                                      topMargin,
-//                                      bottomMargin,
-//                                      labelPitch);
-//         mPrinterInfo.setCustomPaperInfo(customPaperInfo);
-//         List<Map<CustomPaperInfo.ErrorParameter, CustomPaperInfo.ErrorDetail>> errors = mPrinterInfo.setCustomPaperInfo(customPaperInfo);
-
-//         PaperKind paperKind = PaperKind.valueOf(sharedPreferences.getString("rjPaperKind", "DIE_CUT"));
-//         float width = 51.0f;
-//         float length = 26.0f;
-//         float rightMargin = 0.0f;
-//         float leftMargin = 0.0f;
-//         float topMargin = 0.0f;
-//         float bottomMargin = 0.0f;
-//         float labelPitch = 0.0f;
-//         float markPosition = 0.0f;
-//         float markHeight = 0.0f;
-//         Unit unit = Unit.valueOf(sharedPreferences.getString("rjPaperUnit", "Mm"));
-// 
-//         CustomPaperInfo customPaperInfo;
-//         switch (paperKind) {
-//             case DIE_CUT:
-//                 Log.d("paperKind", "DIE_CUT");
-//                 customPaperInfo = CustomPaperInfo.newCustomDiaCutPaper(mPrinterInfo.printerModel, unit, width, length, rightMargin, leftMargin, topMargin, bottomMargin, labelPitch);
-//                 break;
-//             case MARKED_ROLL:
-//                 Log.d("paperKind", "MARKED_ROLL");
-//                 customPaperInfo = CustomPaperInfo.newCustomMarkRollPaper(mPrinterInfo.printerModel, unit, width, length, rightMargin, leftMargin, topMargin, bottomMargin, markPosition, markHeight);
-//                 break;
-//             case ROLL:
-//                 Log.d("paperKind", "ROLL");
-//             default:
-//                 Log.d("paperKind", "default");
-//                 customPaperInfo = CustomPaperInfo.newCustomRollPaper(mPrinterInfo.printerModel, unit, width, rightMargin, leftMargin, topMargin);
-//                 break;
-//         }
 // 
 //         List<Map<CustomPaperInfo.ErrorParameter, CustomPaperInfo.ErrorDetail>> errors = mPrinterInfo.setCustomPaperInfo(customPaperInfo);
 // 
@@ -514,7 +460,7 @@ public abstract class BasePrint {
             try {
                 InputStream input;
                 OutputStream output;
-                input = classContext.getResources().openRawResource(fileID);
+                input = context.getResources().openRawResource(fileID);
                 output = new FileOutputStream(dstFile);
                 int DEFAULT_BUFFER_SIZE = 1024 * 4;
                 byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
