@@ -325,7 +325,6 @@ public class BrotherPrinter extends CordovaPlugin {
     }
 
     private void findPrinters(final CallbackContext callbackctx) {
-        Log.d(TAG, " findPrinters");
 
         cordova.getThreadPool().execute(new Runnable() {
             @Override
@@ -338,7 +337,6 @@ public class BrotherPrinter extends CordovaPlugin {
     }
 
     private void setPrinter(JSONArray args, final CallbackContext callbackctx) {
-        Log.d(TAG, " setPrinter");
         try {
             JSONObject obj = args.getJSONObject(0);
             DiscoveredPrinter printer = new DiscoveredPrinter(obj);
@@ -383,17 +381,14 @@ public class BrotherPrinter extends CordovaPlugin {
         raw2file("RJ2150_57x32mm.bin", R.raw.rj2150_57x32mm, context);
 
     
-        Log.d(TAG, " printViaSDK");
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(cordova.getActivity());
-        Log.d(TAG, " printViaSDK::sharedPreferences");
         String port = sharedPreferences.getString("port", "");
         if ("".equals(port)) {
             PluginResult result = new PluginResult(PluginResult.Status.ERROR, "No printer has been set.");
             callbackctx.sendPluginResult(result);
             return;
         }
-        Log.d(TAG, " printViaSDK::Port");
         if (PrinterInfo.Port.BLUETOOTH.toString().equals(port)) {
             BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
             if (bluetoothAdapter == null) {
@@ -411,7 +406,6 @@ public class BrotherPrinter extends CordovaPlugin {
             mBitmapPrint.setBluetoothAdapter(bluetoothAdapter);
             mFilePrint.setBluetoothAdapter(bluetoothAdapter);
         }
-        Log.d(TAG, " printViaSDK::bmpFromBase64");
 
         Bitmap bitmap = null;
         try {
@@ -423,13 +417,11 @@ public class BrotherPrinter extends CordovaPlugin {
             callbackctx.sendPluginResult(result);
             return;
         }
-        Log.d(TAG, " printViaSDK::bitmap = null?");
         if (bitmap == null) {
             PluginResult result = new PluginResult(PluginResult.Status.ERROR, "The passed in data did not seem to be a decodable image. Please ensure it is a base64 encoded string of a supported Android format");
             callbackctx.sendPluginResult(result);
             return;
         }
-        Log.d(TAG, " printViaSDK::setCallbackContext");
 
         mHandle.setCallbackContext(callbackctx);
 
@@ -437,7 +429,6 @@ public class BrotherPrinter extends CordovaPlugin {
         bitmaps.add(bitmap);
 
         mBitmapPrint.setBitmaps(bitmaps);
-        Log.d(TAG, " printViaSDK::print");
 
         mBitmapPrint.print();
     }
