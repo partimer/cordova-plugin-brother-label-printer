@@ -374,8 +374,8 @@ public class BrotherPrinter extends CordovaPlugin {
 
     private void printViaSDK(final JSONArray args, final CallbackContext callbackctx) {
     // send bin config file to phone file system
-//         Context context = cordova.getActivity().getApplicationContext();
-//         raw2file("RJ2150_51x26mm.bin", R.raw.rj2150_51x26mm, context);
+        Context context = cordova.getActivity().getApplicationContext();
+        raw2file("RJ2150_51x26mm.bin", R.raw.rj2150_51x26mm, context);
 
     
         Log.d(TAG, " printViaSDK");
@@ -437,34 +437,34 @@ public class BrotherPrinter extends CordovaPlugin {
         mBitmapPrint.print();
     }
 
-//     /**
-//      * copy from raw in resource
-//      */
-//     private void raw2file(String fileName, int fileID, Context context) {
-// 
-//         File newdir = new File(Common.CUSTOM_PAPER_FOLDER);
-//         if (!newdir.exists()) {
-//             newdir.mkdir();
-//         }
-//         File dstFile = new File(Common.CUSTOM_PAPER_FOLDER + fileName);
-//         if (!dstFile.exists()) {
-//             try {
-//                 InputStream input;
-//                 OutputStream output;
-//                 input = context.getResources().openRawResource(fileID);
-//                 output = new FileOutputStream(dstFile);
-//                 int DEFAULT_BUFFER_SIZE = 1024 * 4;
-//                 byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
-//                 int n;
-//                 while (-1 != (n = input.read(buffer))) {
-//                     output.write(buffer, 0, n);
-//                 }
-//                 input.close();
-//                 output.close();
-//             } catch (IOException ignored) {
-//             }
-//         }
-//     }
+    /**
+     * copy from raw in resource
+     */
+    private void raw2file(String fileName, int fileID, Context context) {
+
+        File newdir = new File(Common.CUSTOM_PAPER_FOLDER);
+        if (!newdir.exists()) {
+            newdir.mkdir();
+        }
+        File dstFile = new File(Common.CUSTOM_PAPER_FOLDER + fileName);
+        if (!dstFile.exists()) {
+            try {
+                InputStream input;
+                OutputStream output;
+                input = context.getResources().openRawResource(fileID);
+                output = new FileOutputStream(dstFile);
+                int DEFAULT_BUFFER_SIZE = 1024 * 4;
+                byte[] buffer = new byte[DEFAULT_BUFFER_SIZE];
+                int n;
+                while (-1 != (n = input.read(buffer))) {
+                    output.write(buffer, 0, n);
+                }
+                input.close();
+                output.close();
+            } catch (IOException ignored) {
+            }
+        }
+    }
     
     private void sendUSBConfig(final JSONArray args, final CallbackContext callbackctx){
 
