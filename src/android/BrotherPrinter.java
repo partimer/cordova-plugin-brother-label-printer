@@ -380,7 +380,7 @@ public class BrotherPrinter extends CordovaPlugin {
     private void printViaSDK(final JSONArray args, final CallbackContext callbackctx) {
         // send bin config file to phone file system
         Context context = cordova.getActivity().getApplicationContext();
-        raw2file("RJ2150_51x26mm.bin", R.raw.rj2150_51x26mm, context);
+        raw2file("RJ2150_57x32mm.bin", R.raw.rj2150_57x32mm, context);
 
     
         Log.d(TAG, " printViaSDK");
