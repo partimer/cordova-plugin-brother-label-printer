@@ -13,6 +13,9 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Set;
 
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
@@ -52,8 +55,10 @@ import com.brother.ptouch.sdk.PrinterStatus;
 import com.brother.ptouch.sdk.printdemo.common.MsgHandle;
 import com.brother.ptouch.sdk.printdemo.printprocess.ImageBitmapPrint;
 import com.brother.ptouch.sdk.printdemo.printprocess.ImageFilePrint;
+import com.brother.ptouch.sdk.printdemo.common.Common;
 
 import com.littledsys.harps.mobile.R;
+
 
 
 public class BrotherPrinter extends CordovaPlugin {
@@ -373,7 +378,7 @@ public class BrotherPrinter extends CordovaPlugin {
     }
 
     private void printViaSDK(final JSONArray args, final CallbackContext callbackctx) {
-    // send bin config file to phone file system
+        // send bin config file to phone file system
         Context context = cordova.getActivity().getApplicationContext();
         raw2file("RJ2150_51x26mm.bin", R.raw.rj2150_51x26mm, context);
 
