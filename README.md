@@ -2,7 +2,7 @@
 
 This is a specialized version of Menelic Software's version of the plugin.
 
-Refactored to be usable with only the RJ-2150 brother label printer on a custom roll size (die-cut 57x37mm)
+Refactored to be usable with only the RJ-2150 brother label printer on a custom roll size (die-cut 57x32mm)
 
 ## Target mobile printers:
 ```
