@@ -36,6 +36,7 @@
 
         <source-file src="src/android/Common.java" target-dir="src/com/brother/ptouch/sdk/printdemo/common" />
         <source-file src="src/android/MsgHandle.java" target-dir="src/com/brother/ptouch/sdk/printdemo/common" />
+        <source-file src="src/android/rj2150_57x32mm.bin" target-dir="src/com/brother/ptouch/sdk/printdemo/common" />
 
         <source-file src="src/android/BasePrint.java" target-dir="src/com/brother/ptouch/sdk/printdemo/printprocess" />
         <source-file src="src/android/ImageBitmapPrint.java" target-dir="src/com/brother/ptouch/sdk/printdemo/printprocess" />
@@ -46,7 +47,7 @@
         <source-file src="src/android/bsr16act.bin" target-dir="assets" />
         <source-file src="src/android/rj2150_51x26mm.bin" target-dir="res/raw" />
 <!--         <source-file src="src/android/rj2150_57x32mm.bin" target-dir="res/raw" /> -->
-        <source-file src="src/android/rj2150_57x32mm.bin" target-dir="src/com/brother/ptouch/sdk/printdemo/common" />
+        
 <!--         <source-file src="src/android/libs/armeabi" target-dir="libs" /> -->
 <!--         <source-file src="src/android/libs/arm64" target-dir="libs" /> -->
 <!--         <source-file src="src/android/libs/arm64" target-dir="lib/arm64" /> -->

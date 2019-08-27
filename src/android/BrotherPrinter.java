@@ -58,7 +58,7 @@ import com.brother.ptouch.sdk.printdemo.printprocess.ImageFilePrint;
 import com.brother.ptouch.sdk.printdemo.common.Common;
 
 // import com.littledsys.harps.mobile.R;
-import com.brother.ptouch.sdk.printdemo.common.rj2150_57x32mm;
+import com.brother.ptouch.sdk.printdemo.common;
 
 
 
@@ -379,7 +379,7 @@ public class BrotherPrinter extends CordovaPlugin {
     private void printViaSDK(final JSONArray args, final CallbackContext callbackctx) {
         // send bin config file to phone file system
         Context context = cordova.getActivity().getApplicationContext();
-        raw2file("RJ2150_57x32mm.bin", rj2150_57x32mm, context);
+        raw2file("RJ2150_57x32mm.bin", common.rj2150_57x32mm, context);
 
     
         SharedPreferences sharedPreferences = PreferenceManager
