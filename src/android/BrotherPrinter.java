@@ -381,9 +381,9 @@ public class BrotherPrinter extends CordovaPlugin {
         // send bin config file to phone file system
         Context context = cordova.getActivity().getApplicationContext();
 //         raw2file("RJ2150_57x32mm.bin", R.raw.rj2150_57x32mm, context);
-        raw2file("RJ2150_57x32mm.bin", getResources("rj2150_57x32mm", "raw", getPackageName()), context);
+        raw2file("RJ2150_57x32mm.bin", cordova.getActivity().getResources().getIdentifier("rj2150_57x32mm", "raw", cordova.getActivity().getPackageName()), context);
 // setContentView(getResources("rj2150_57x32mm", "raw", getPackageName()));
-    
+//     cordova.getActivity().getResources().getIdentifier("rj2150_57x32mm", "raw", cordova.getActivity().getPackageName())
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(cordova.getActivity());
         String port = sharedPreferences.getString("port", "");
