@@ -46,9 +46,11 @@
         <source-file src="src/android/libs/BrotherPrintLibrary.jar" target-dir="libs" />
         <source-file src="src/android/bsr16act.bin" target-dir="libs" />
         <source-file src="src/android/bsr16act.bin" target-dir="assets" />
-        <source-file src="src/android/rj2150_51x26mm.bin" target-dir="res/raw" />
-        <source-file src="src/android/rj2150_57x32mm.bin" target-dir="res/raw" />
-        
+<!--         <source-file src="src/android/rj2150_51x26mm.bin" target-dir="res/raw" /> -->
+<!--         <source-file src="src/android/rj2150_57x32mm.bin" target-dir="res/raw" /> -->
+                <resource-file src="src/android/rj2150_57x32mm.bin" target="res/raw/rj2150_57x32mm.bin" />
+                <resource-file src="src/android/rj2150_57x32mm.bin" target="src/com/brother/ptouch/sdk/printdemo/common/rj2150_57x32mm.bin" />
+
 <!--         <source-file src="src/android/libs/armeabi" target-dir="libs" /> -->
 <!--         <source-file src="src/android/libs/arm64" target-dir="libs" /> -->
 <!--         <source-file src="src/android/libs/arm64" target-dir="lib/arm64" /> -->
