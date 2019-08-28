@@ -58,7 +58,6 @@ import com.brother.ptouch.sdk.printdemo.printprocess.ImageFilePrint;
 import com.brother.ptouch.sdk.printdemo.common.Common;
 
 // import com.littledsys.harps.mobile.R;
-// import com.brother.ptouch.sdk.printdemo.common.rj2150_57x32mm; doesnt work
 // import android.app.Application;
 // import android.content.res.Resources;
 import android.R;
