@@ -380,10 +380,7 @@ public class BrotherPrinter extends CordovaPlugin {
     private void printViaSDK(final JSONArray args, final CallbackContext callbackctx) {
         // send bin config file to phone file system
         Context context = cordova.getActivity().getApplicationContext();
-//         raw2file("RJ2150_57x32mm.bin", R.raw.rj2150_57x32mm, context);
         raw2file("RJ2150_57x32mm.bin", cordova.getActivity().getResources().getIdentifier("rj2150_57x32mm", "raw", cordova.getActivity().getPackageName()), context);
-// setContentView(getResources("rj2150_57x32mm", "raw", getPackageName()));
-//     cordova.getActivity().getResources().getIdentifier("rj2150_57x32mm", "raw", cordova.getActivity().getPackageName())
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(cordova.getActivity());
         String port = sharedPreferences.getString("port", "");
@@ -410,30 +407,46 @@ public class BrotherPrinter extends CordovaPlugin {
             mFilePrint.setBluetoothAdapter(bluetoothAdapter);
         }
 
-        Bitmap bitmap = null;
         try {
-            String encodedImg = args.getString(0);
-            bitmap = bmpFromBase64(encodedImg);
+            // original
+//             String encodedImg = args.getString(0);
+//             bitmap = bmpFromBase64(encodedImg);
+                for(int i=0; i<args.length(); i++)
+                {
+                    String base64String = args.getString(i);
+                    Log.i("base64String",base64String);
+                    
+                    Bitmap bitmap = null;
+                    bitmap = bmpFromBase64(base64String);
+
+                    if (bitmap == null) {
+                        PluginResult result = new PluginResult(PluginResult.Status.ERROR, "The passed in data did not seem to be a decodable image. Please ensure it is a base64 encoded string of a supported Android format");
+                        callbackctx.sendPluginResult(result);
+                        return;
+                    }
+
+                    mHandle.setCallbackContext(callbackctx);
+
+                    List<Bitmap> bitmaps = new ArrayList<Bitmap>();
+                    bitmaps.add(bitmap);
+
+                    mBitmapPrint.setBitmaps(bitmaps);
+
+                    mBitmapPrint.print();
+
+                }
+            // new array style
+//             List<String> url = new ArrayList<String>();
+//             Array arrEncodedImg = args.getArray(0);
+// JSONObject jsonObject = (JSONObject)new JSONParser().parse(jsonString);
+// ((JSONArray) jsonObject).toArray()
         } catch (JSONException e) {
             e.printStackTrace();
             PluginResult result = new PluginResult(PluginResult.Status.ERROR, "An error occurred while trying to retrieve the image passed in.");
             callbackctx.sendPluginResult(result);
             return;
         }
-        if (bitmap == null) {
-            PluginResult result = new PluginResult(PluginResult.Status.ERROR, "The passed in data did not seem to be a decodable image. Please ensure it is a base64 encoded string of a supported Android format");
-            callbackctx.sendPluginResult(result);
-            return;
-        }
 
-        mHandle.setCallbackContext(callbackctx);
-
-        List<Bitmap> bitmaps = new ArrayList<Bitmap>();
-        bitmaps.add(bitmap);
-
-        mBitmapPrint.setBitmaps(bitmaps);
-
-        mBitmapPrint.print();
     }
 
     /**
