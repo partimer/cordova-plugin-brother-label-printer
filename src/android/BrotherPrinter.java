@@ -413,6 +413,7 @@ public class BrotherPrinter extends CordovaPlugin {
 //             bitmap = bmpFromBase64(encodedImg);
                 JSONArray imagesJSON = args.getJSONArray(0);
 //                 String[] images = args[0];
+                List<Bitmap> bitmaps = new ArrayList<Bitmap>();
                 for(int i=0; i<imagesJSON.length(); i++)
                 {
                     String base64String = imagesJSON.getString(i);
@@ -426,17 +427,11 @@ public class BrotherPrinter extends CordovaPlugin {
                         callbackctx.sendPluginResult(result);
                         return;
                     }
-
                     mHandle.setCallbackContext(callbackctx);
-
-                    List<Bitmap> bitmaps = new ArrayList<Bitmap>();
                     bitmaps.add(bitmap);
-
-                    mBitmapPrint.setBitmaps(bitmaps);
-
-                    mBitmapPrint.print();
-
                 }
+                mBitmapPrint.setBitmaps(bitmaps);
+                mBitmapPrint.print();
             // new array style
 //             List<String> url = new ArrayList<String>();
 //             Array arrEncodedImg = args.getArray(0);
