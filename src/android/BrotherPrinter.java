@@ -411,10 +411,11 @@ public class BrotherPrinter extends CordovaPlugin {
             // original
 //             String encodedImg = args.getString(0);
 //             bitmap = bmpFromBase64(encodedImg);
-                String[] images = args[0];
-                for(int i=0; i<images.length(); i++)
+                JSONArray imagesJSON = args.getJSONArray(0);
+//                 String[] images = args[0];
+                for(int i=0; i<imagesJSON.length(); i++)
                 {
-                    String base64String = images.getString(i);
+                    String base64String = imagesJSON.getString(i);
                     Log.i("base64String",base64String);
                     
                     Bitmap bitmap = null;
