@@ -28,7 +28,10 @@ BrotherPrinter.prototype = {
             console.log('No data passed in. Expects a bitmap.')
             return
         }
-        cordova.exec(callback, function(err){console.log('error: '+err)}, 'BrotherPrinter', 'printViaSDK', [data])
+        if(typeof data == "string")
+            cordova.exec(callback, function(err){console.log('error: '+err)}, 'BrotherPrinter', 'printViaSDK', [[data]])
+        else
+            cordova.exec(callback, function(err){console.log('error: '+err)}, 'BrotherPrinter', 'printViaSDK', [data])
     },
 
     sendUSBConfig: function (data, callback) {
