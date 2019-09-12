@@ -408,11 +408,10 @@ public class BrotherPrinter extends CordovaPlugin {
         }
 
         try {
-            // original
+                // original
 //             String encodedImg = args.getString(0);
 //             bitmap = bmpFromBase64(encodedImg);
                 JSONArray imagesJSON = args.getJSONArray(0);
-//                 String[] images = args[0];
                 List<Bitmap> bitmaps = new ArrayList<Bitmap>();
                 for(int i=0; i<imagesJSON.length(); i++)
                 {
@@ -432,11 +431,6 @@ public class BrotherPrinter extends CordovaPlugin {
                 }
                 mBitmapPrint.setBitmaps(bitmaps);
                 mBitmapPrint.print();
-            // new array style
-//             List<String> url = new ArrayList<String>();
-//             Array arrEncodedImg = args.getArray(0);
-// JSONObject jsonObject = (JSONObject)new JSONParser().parse(jsonString);
-// ((JSONArray) jsonObject).toArray()
         } catch (JSONException e) {
             e.printStackTrace();
             PluginResult result = new PluginResult(PluginResult.Status.ERROR, "An error occurred while trying to retrieve the image passed in.");
